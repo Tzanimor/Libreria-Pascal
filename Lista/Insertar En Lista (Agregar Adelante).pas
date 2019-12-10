@@ -7,5 +7,6 @@ Begin
      New (nue);
      nue^.dat:= Dat;
      nue^.sig:= L;
+     L:=nue;
 End;
 
