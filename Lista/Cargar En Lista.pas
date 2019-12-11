@@ -1,4 +1,4 @@
-Procedure CargarRegistro (var D: Registro; var ok: boolean);
+Procedure CargarRegistro (var D: Registro);
 Begin
      {readln(D.1);}
      D.1:= Random({Numero con corte de control}) - 1;
@@ -7,9 +7,7 @@ Begin
         D.3:= Random({numero});
         {readln(D.2);}
         {readln(D.3);}
-     end
-     else
-         ok:= false;
+     end;
 End;
 
 Procedure InsertarOrdenadoL (var Pri: Lista; Dat: Registro);
@@ -40,6 +38,7 @@ Begin
      New (nue);
      nue^.dat:= Dat;
      nue^.sig:= L;
+     Pri:=nue;
 End;
 
 ...
@@ -53,9 +52,9 @@ Begin
      L:= Nil;
      ok:= true;
      Randomize;
-     CargarRegistro (D, ok);
-     while ok do begin
+     CargarRegistro (D);
+     while D.1 <> -1 do begin
            AgregarAtrasL (V, D);
-           CargarRegistro (D, ok);
+           CargarRegistro (D);
      end;
 End;
