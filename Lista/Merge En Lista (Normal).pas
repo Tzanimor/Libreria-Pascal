@@ -18,6 +18,20 @@ Begin
     end;
 End;
 
+Procedure AgregarAtrasL (var Pri, Ult: Lista; Dat: {tipo});
+Var
+   nue: Lista;
+Begin
+     New (nue);
+     nue^.dat:= Dat;
+     nue^.sig:= Nil;
+     if (Pri <> Nil) then
+         Ult^.sig:= nue
+     else
+         Pri:= nue;
+     Ult:= nue;
+End;
+
 ...
 }
 
@@ -46,11 +60,12 @@ Procedure Merge(V: Vector; var L : Lista);
 var
     min: {tipo};
     ok: boolean;
+    Ult: Lista;
 Begin
     L:= Nil;
     DeterminarMinimo (V, min, ok);
     while ok do begin
-        AgregarAtras (L, min);
+        AgregarAtras (Ult, L, min);
         DeterminarMinimo (V, min, ok);
     end;
 End;
