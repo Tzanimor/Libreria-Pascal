@@ -10,7 +10,7 @@ Begin
     Act:= Act^.sig;
   end;
   if (Act = Pri) then
-     Pri:= nue
+     Pri:= nue;
   else
       Ant^.sig:= nue;
   nue^.sig:= Act;
