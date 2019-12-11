@@ -35,22 +35,21 @@ End;
 ...
 }
 
-Procedure DeterminarMinimo(var V: Vector; var min: {tipo}; var ok : boolean);
+Procedure DeterminarMinimo(var V: Vector; var min: {tipo});
 var
     i, x: integer;
     tmp: Lista;
 Begin
-    min:= {Valor mas alto posible};
+    min.cod:= {Valor mas alto posible};
     for i:= {SubRango del Vector} do begin
         if (V[i] <> nil) then begin
-            if (V[i]^.dat < min) then begin
+            if (V[i]^.dat.cod < min.cod) then begin
                 min:= V[i]^.dat;
                 x:= i;
              end;
         end;
     end;
-    ok:= min < {Valor mas alto posible declarado antes};
-    if ok then begin
+    if min.cod < {Valor mas alto posible declarado antes} then begin
         tmp:= V[x];
         V[x]:= V[x]^.sig;
     end;
@@ -63,8 +62,8 @@ var
     Ult: Lista;
 Begin
     L:= Nil;
-    DeterminarMinimo (V, min, ok);
-    while ok do begin
+    DeterminarMinimo (V, min);
+    while min.cod < {Valor mas alto posible declarado antes} do begin
         AgregarAtras (Ult, L, min);
         DeterminarMinimo (V, min, ok);
     end;
