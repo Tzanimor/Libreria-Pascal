@@ -2,4 +2,4 @@
 A Taller si la promociono
 Para cualquiera que este cursando Taller de programación de la UNLP y necesite una librería bien flama.
 
-Made by Nacho.
+Made by Nacho, editor Lucho.
